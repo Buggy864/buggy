@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Buggy864 - Twitch стример и контент-мейкер" />
-  <link rel="preload" href="ww.png" as="image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
   <title>Buggy864</title>
   <style>
     :root {
@@ -20,38 +22,50 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Comfortaa', sans-serif;
       background: url('ww.png') no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
       background-size: cover;
-      color: var(--text-color);
       min-height: 100vh;
       display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-color);
       padding: 1rem;
     }
 
     .container {
       width: 90%;
       max-width: 600px;
-      margin: auto;
-      text-align: center;
-      background-color: rgba(0, 0, 0, 0.4);
-      padding: clamp(1rem, 5vw, 2rem);
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
       border-radius: 20px;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      text-align: center;
+      transform: translateY(20px);
+      animation: slideIn 0.5s forwards;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 1.5rem;
+      border: 3px solid var(--primary-color);
+      transition: transform 0.3s ease;
+    }
+
+    .avatar:hover {
+      transform: scale(1.1) rotate(5deg);
     }
 
     h1 {
-      font-size: clamp(1.5rem, 5vw, 2.5rem);
-      margin-bottom: 1rem;
+      font-size: 2rem;
       color: var(--primary-color);
+      margin-bottom: 1rem;
     }
 
     p {
-      font-size: clamp(0.9rem, 3vw, 1.1rem);
+      font-size: 1.1rem;
       margin-bottom: 2rem;
       line-height: 1.5;
     }
@@ -59,58 +73,45 @@
     .links {
       display: flex;
       flex-direction: column;
-      gap: 0.8rem;
-      max-width: 400px;
-      margin: 0 auto;
+      gap: 1rem;
     }
 
     .links a {
       background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
       color: var(--text-color);
       text-decoration: none;
-      padding: 0.8rem;
+      padding: 1rem;
       border-radius: 12px;
       font-weight: bold;
-      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-      transition: transform 0.2s ease;
+      transition: transform 0.3s ease;
     }
 
     .links a:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
-    .links a:active {
-      transform: translateY(0);
-    }
-
-    .avatar {
-      width: clamp(80px, 25vw, 120px);
-      height: clamp(80px, 25vw, 120px);
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1rem;
-      border: 3px solid var(--primary-color);
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @media (max-width: 480px) {
-      body {
-        padding: 0.5rem;
-      }
-      
       .container {
         width: 95%;
-        padding: 1rem;
-      }
-      
-      .links a {
-        padding: 0.7rem;
+        padding: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="clown.jpg" alt="Аватар стримера" class="avatar" loading="lazy" />
+    <img src="clown.jpg" alt="Аватар стримера" class="avatar" />
     <h1>Все мои ссылки</h1>
     <p>Заходи на стримы, поддержи донатом и подпишись!</p>
     <div class="links">
